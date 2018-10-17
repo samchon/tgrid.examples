@@ -1,17 +1,13 @@
 import { 
 	ICalculator, 
-	INormal, IScientific, IStatistics
+	IScientific, IStatistics
 } from "./ICalculator";
 
 export class Calculator implements ICalculator
 {
-	public normal = new Normal();
 	public scientific = new Scientific();
 	public statistics = new Statistics();
-}
 
-class Normal implements INormal
-{
 	public plus(x: number, y: number): number
 	{
 		return x + y;
@@ -20,12 +16,15 @@ class Normal implements INormal
 	{
 		return x - y;
 	}
+	
 	public multiplies(x: number, y: number): number
 	{
 		return x * y;
 	}
 	public divides(x: number, y: number): number
 	{
+		if (y === 0)
+			throw new Error("Divided by zero.");
 		return x / y;
 	}
 }
@@ -36,12 +35,18 @@ class Scientific implements IScientific
 	{
 		return Math.pow(x, y);
 	}
+
 	public log(x: number, y: number): number
 	{
+		if (x < 0 || y < 0)
+			throw new Error("Negative value on log.");
 		return Math.log(y) / Math.log(x);
 	}
+
 	public sqrt(x: number): number
 	{
+		if (x < 0)
+			throw new Error("Negative value on sqaure.");
 		return Math.sqrt(x);
 	}
 }

@@ -1,4 +1,4 @@
-import * as rl from "readline";
+import { createInterface } from "readline";
 
 export namespace Scanner
 {
@@ -6,7 +6,7 @@ export namespace Scanner
 	{
 		return new Promise(resolve =>
 		{
-			let scanner = rl.createInterface
+			let scanner = createInterface
 			({
 				input: process.stdin, 
 				output: process.stdout

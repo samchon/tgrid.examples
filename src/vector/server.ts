@@ -1,10 +1,10 @@
 import { Vector } from "tstl/container";
-import { WebServer } from "tgrid/protocol/web";
+import { WebServer, WebAcceptor } from "tgrid/protocol/web";
 
 function main(): void
 {
     let server = new WebServer();
-    server.open(10100, async acceptor =>
+    server.open(10100, async (acceptor: WebAcceptor) =>
     {
         await acceptor.accept();
         await acceptor.listen(new Vector<number>());

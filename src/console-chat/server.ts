@@ -1,7 +1,7 @@
-import { WebServer } from "tgrid/protocol/web";
-import { HashMap } from "tstl/container/HashMap";
-
+import { WebServer, WebAcceptor } from "tgrid/protocol/web";
 import { Promisify } from "tgrid/base/Promisify";
+
+import { HashMap } from "tstl/container/HashMap";
 import { IChatPrinter } from "./internal/IChatPrinter";
 import { IChatService } from "./internal/IChatService";
 
@@ -49,7 +49,7 @@ class ChatService implements IChatService
 function main(): void
 {
 	let server: WebServer = new WebServer();
-	server.open(10103, async acceptor =>
+	server.open(10103, async (acceptor: WebAcceptor) =>
 	{
 		let service = new ChatService(acceptor.getDriver());
 

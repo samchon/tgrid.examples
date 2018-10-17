@@ -1,4 +1,5 @@
 import { WebConnector } from "tgrid/protocol/web";
+import { Promisify } from "tgrid/base";
 
 import { Scanner } from "./internal/Scanner";
 import { IChatService } from "./internal/IChatService";
@@ -18,11 +19,11 @@ async function main(): Promise<void>
 	// PREPARATIONS
 	//----
 	// CONNECT WITH LISTENER
-	let connector = new WebConnector(new ChatPrinter());
+	let connector: WebConnector = new WebConnector(new ChatPrinter());
 	await connector.connect("ws://127.0.0.1:10103");
 
 	// SPECIFY CONTROLLER
-	let service = connector.getDriver<IChatService>();
+	let service: Promisify<IChatService> = connector.getDriver<IChatService>();
 
 	//----
 	// DO CHAT
