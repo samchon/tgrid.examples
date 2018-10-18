@@ -46,10 +46,10 @@ class ChatService implements IChatService
 	}
 }
 
-function main(): void
+async function main(): Promise<void>
 {
 	let server: WebServer = new WebServer();
-	server.open(10103, async (acceptor: WebAcceptor) =>
+	await server.open(10103, async (acceptor: WebAcceptor) =>
 	{
 		let service = new ChatService(acceptor.getDriver());
 

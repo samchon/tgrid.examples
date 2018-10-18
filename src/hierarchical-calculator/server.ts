@@ -1,10 +1,10 @@
 import { WebServer, WebAcceptor } from "tgrid/protocol/web";
 import { Calculator } from "./internal/Calculator";
 
-function main(): void
+async function main(): Promise<void>
 {
 	let server: WebServer = new WebServer();
-	server.open(10102, async (acceptor: WebAcceptor) =>
+	await server.open(10102, async (acceptor: WebAcceptor) =>
 	{
 		await acceptor.accept();
 		await acceptor.listen(new Calculator());
