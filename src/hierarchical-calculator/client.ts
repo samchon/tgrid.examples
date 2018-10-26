@@ -1,5 +1,5 @@
 import { WebConnector } from "tgrid/protocol/web";
-import { Promisify } from "tgrid/base";
+import { Driver } from "tgrid/base";
 import { ICalculator } from "./internal/ICalculator";
 
 async function main(): Promise<void>
@@ -12,7 +12,7 @@ async function main(): Promise<void>
 	await connector.connect("ws://127.0.0.1:10102");
 
 	// GET DRIVER
-	let calc: Promisify<ICalculator> = connector.getDriver<ICalculator>();
+	let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
 	
 	//----
 	// CALL FUNCTIONS

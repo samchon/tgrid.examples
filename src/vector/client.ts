@@ -1,6 +1,6 @@
 import { Vector } from "tstl/container";
 import { WebConnector } from "tgrid/protocol/web";
-import { Promisify } from "tgrid/base";
+import { Driver } from "tgrid/base";
 
 type IVector<T> = Pick<Vector<T>, "size" | "at" | "push_back">;
 
@@ -9,7 +9,7 @@ async function main(): Promise<void>
     let connector: WebConnector = new WebConnector();
     await connector.connect("ws://127.0.0.1:10100");
 
-    let vec: Promisify<IVector<number>> = connector.getDriver<IVector<number>>();
+    let vec: Driver<IVector<number>> = connector.getDriver<IVector<number>>();
     for (let i: number = 0; i < 5; ++i)
 	    await vec.push_back(i);
 

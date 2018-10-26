@@ -1,5 +1,5 @@
 import { WebServer, WebAcceptor } from "tgrid/protocol/web";
-import { Promisify } from "tgrid/base/Promisify";
+import { Driver } from "tgrid/base";
 
 import { HashMap } from "tstl/container/HashMap";
 import { IChatPrinter } from "./internal/IChatPrinter";
@@ -7,12 +7,12 @@ import { IChatService } from "./internal/IChatService";
 
 class ChatService implements IChatService
 {
-	private static participants_: HashMap<string, Promisify<IChatPrinter>> = new HashMap();
+	private static participants_: HashMap<string, Driver<IChatPrinter>> = new HashMap();
 
-	private driver_: Promisify<IChatPrinter>;
+	private driver_: Driver<IChatPrinter>;
 	private name_: string;
 
-	public constructor(driver: Promisify<IChatPrinter>)
+	public constructor(driver: Driver<IChatPrinter>)
 	{
 		this.driver_ = driver;
 	}
@@ -35,7 +35,7 @@ class ChatService implements IChatService
 		// INFORM TO EVERYBODY
 		for (let it of ChatService.participants_)
 		{
-			let driver: Promisify<IChatPrinter> = it.second;
+			let driver: Driver<IChatPrinter> = it.second;
 			if (driver === this.driver_)
 				continue; // SKIP HIMSELF
 

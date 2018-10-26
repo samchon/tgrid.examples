@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/samchon/tgrid-examples#readme",
   "dependencies": {
-    "tgrid": "^0.0.9"
+    "tgrid": "^0.0.15"
   },
   "devDependencies": {
     "@types/node": "^10.12.0"
