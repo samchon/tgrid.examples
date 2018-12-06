@@ -1,5 +1,5 @@
-import { WorkerServer } from "tgrid/protocol/worker";
-import { Driver } from "tgrid/base";
+import { WorkerServer } from "tgrid/protocols/workers";
+import { Driver } from "tgrid/basic";
 
 import { Mutex } from "tstl/thread";
 import { randint } from "tstl/algorithm";

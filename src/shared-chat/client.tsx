@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { SharedWorkerConnector } from "tgrid/protocol/worker";
-import { Driver } from "tgrid/base";
+import { SharedWorkerConnector } from "tgrid/protocols/workers";
+import { Driver } from "tgrid/basic";
 import { IChatService } from "./internal/IChatService";
 
 import { ChatPrinter } from "./internal/ChatPrinter";

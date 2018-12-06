@@ -1,5 +1,5 @@
-import { WebServer, WebAcceptor } from "tgrid/protocol/web";
-import { Driver } from "tgrid/base";
+import { WebServer, WebAcceptor } from "tgrid/protocols/web";
+import { Driver } from "tgrid/basic";
 
 import { HashMap } from "tstl/container/HashMap";
 import { IChatPrinter } from "./internal/IChatPrinter";

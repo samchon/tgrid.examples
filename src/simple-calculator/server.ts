@@ -1,4 +1,4 @@
-import { WebServer, WebAcceptor } from "tgrid/protocol/web";
+import { WebServer, WebAcceptor } from "tgrid/protocols/web";
 import { Calculator } from "./internal/Calculator";
 
 async function main(): Promise<void>

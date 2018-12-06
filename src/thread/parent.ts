@@ -1,4 +1,4 @@
-import { WorkerConnector } from "tgrid/protocol/worker";
+import { WorkerConnector } from "tgrid/protocols/workers";
 
 import { Vector } from "tstl/container";
 import { Mutex } from "tstl/thread";

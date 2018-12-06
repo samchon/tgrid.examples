@@ -1,5 +1,5 @@
 import { Vector } from "tstl/container";
-import { WebServer, WebAcceptor } from "tgrid/protocol/web";
+import { WebServer, WebAcceptor } from "tgrid/protocols/web";
 
 async function main(): Promise<void>
 {
