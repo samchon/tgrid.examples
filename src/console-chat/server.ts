@@ -1,5 +1,5 @@
 import { WebServer, WebAcceptor } from "tgrid/protocols/web";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { HashMap } from "tstl/container/HashMap";
 import { IChatPrinter } from "./internal/IChatPrinter";
@@ -15,6 +15,13 @@ class ChatService implements IChatService
 	public constructor(driver: Driver<IChatPrinter>)
 	{
 		this.driver_ = driver;
+		this.name_ = null;
+	}
+
+	public destructor(): void
+	{
+		if (this.name_ !== null)
+			ChatService.participants_.erase(this.name_);
 	}
 
 	public setName(str: string): boolean
@@ -51,10 +58,17 @@ async function main(): Promise<void>
 	let server: WebServer = new WebServer();
 	await server.open(10103, async (acceptor: WebAcceptor) =>
 	{
-		let service = new ChatService(acceptor.getDriver());
+		// PREPARE DRIVER
+		let driver = acceptor.getDriver<IChatPrinter>();
+		let service = new ChatService(driver);
 
+		// HANDSHAKE
 		await acceptor.accept();
 		await acceptor.listen(service);
+		
+		// DESTRUCTOR
+		await acceptor.join();
+		service.destructor();
 	});
 }
 main();

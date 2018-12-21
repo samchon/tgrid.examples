@@ -1,6 +1,6 @@
 import { Vector } from "tstl/container";
 import { WebConnector } from "tgrid/protocols/web";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 type IVector<T> = Pick<Vector<T>, "size" | "at" | "push_back">;
 
@@ -16,5 +16,7 @@ async function main(): Promise<void>
     console.log("size:", await vec.size());
     for (let i: number = 0; i < await vec.size(); ++i)
         console.log("  element:", await vec.at(i));
+
+    await connector.close();
 }
 main();

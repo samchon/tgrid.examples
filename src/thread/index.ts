@@ -20,12 +20,20 @@ async function main(): Promise<void>
     // CREATE WORKERS
     for (let i: number = 0; i < 4; ++i)
     {
-        workers.push_back(new WorkerConnector(provider));
-        workers.back().connect(__dirname + "/child.js");
+        // CONNECT TO WORKER
+        let w = new WorkerConnector(provider);
+        await w.connect(__dirname + "/child.js");
+
+        // ENROLL IT
+        workers.push_back(w);
     }
 
     // WAIT THEM TO BE CLOSED
     for (let w of workers)
-        await w.join();
+        try
+        {
+            await w.join();
+        }
+        catch {} // CHILD-PROCESS CAN BE CLOSED VERY QUICKLY
 }
 main();

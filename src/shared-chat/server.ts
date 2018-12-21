@@ -1,6 +1,6 @@
 import { HashMap } from "tstl/container";
 import { SharedWorkerServer, SharedWorkerAcceptor } from "tgrid/protocols/workers";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { IChatService } from "./internal/IChatService";
 import { IChatPrinter } from "./internal/IChatPrinter";
@@ -52,9 +52,10 @@ class ChatService implements IChatService
 
 async function main(): Promise<void>
 {
-	new SharedWorkerServer(async (acceptor: SharedWorkerAcceptor) =>
+	let server = new SharedWorkerServer();
+	await server.open(async (acceptor: SharedWorkerAcceptor) =>
 	{
-		let service = new ChatService(acceptor.getDriver());
+		let service = new ChatService(acceptor.getDriver<IChatPrinter>());
 
 		acceptor.accept();
 		acceptor.listen(service);

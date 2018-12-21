@@ -15,14 +15,14 @@
     "TGrid"
   ],
   "author": "Jeongho Nam",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/samchon/tgrid-examples/issues"
   },
   "homepage": "https://github.com/samchon/tgrid-examples#readme",
   "dependencies": {
-    "tgrid": "^0.0.24",
-    "tstl": "^2.0.14"
+    "tgrid": "0.1.0-dev.20181221",
+    "tstl": "^2.1.1"
   },
   "devDependencies": {
     "@types/node": "^10.12.0",
