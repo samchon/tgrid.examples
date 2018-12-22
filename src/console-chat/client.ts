@@ -1,5 +1,5 @@
 import { WebConnector } from "tgrid/protocols/web";
-import { Driver } from "tgrid/components";
+import { Driver } from "tgrid/basic";
 
 import { Scanner } from "./internal/Scanner";
 import { IChatService } from "./internal/IChatService";

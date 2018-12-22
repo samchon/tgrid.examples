@@ -1,6 +1,6 @@
 import { HashMap } from "tstl/container";
 import { SharedWorkerServer, SharedWorkerAcceptor } from "tgrid/protocols/workers";
-import { Driver } from "tgrid/components";
+import { Driver } from "tgrid/basic";
 
 import { IChatService } from "./internal/IChatService";
 import { IChatPrinter } from "./internal/IChatPrinter";
