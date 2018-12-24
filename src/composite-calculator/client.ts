@@ -1,6 +1,6 @@
 import { WebConnector } from "tgrid/protocols/web";
 import { Driver } from "tgrid/basic";
-import { ICalculator } from "./internal/ICalculator";
+import { ICalculator } from "../utils/ICalculator";
 
 async function main(): Promise<void>
 {
