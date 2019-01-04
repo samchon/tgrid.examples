@@ -30,10 +30,6 @@ async function main(): Promise<void>
 
     // WAIT THEM TO BE CLOSED
     for (let w of workers)
-        try
-        {
-            await w.join();
-        }
-        catch {} // CHILD-PROCESS CAN BE CLOSED VERY QUICKLY
+        await w.join();
 }
 main();
