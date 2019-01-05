@@ -63,8 +63,7 @@ async function main(): Promise<void>
 		let service = new ChatService(driver);
 
 		// HANDSHAKE
-		await acceptor.accept();
-		await acceptor.listen(service);
+		await acceptor.accept(service);
 		
 		// DESTRUCTOR
 		await acceptor.join();

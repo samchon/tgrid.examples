@@ -6,8 +6,7 @@ async function main(): Promise<void>
     let server = new WebServer();
     await server.open(10100, async (acceptor: WebAcceptor) =>
     {
-        await acceptor.accept();
-        await acceptor.listen(new Vector<number>());
+        await acceptor.accept(new Vector<number>());
     });
 }
 main();

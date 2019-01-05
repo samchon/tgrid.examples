@@ -10,7 +10,7 @@ interface IController
     print(str: string): void;
 }
 
-async function main(str: string): Promise<void>
+async function main(character: string): Promise<void>
 {
     // PREPARE SERVER
     let server: WorkerServer = new WorkerServer();
@@ -23,7 +23,7 @@ async function main(str: string): Promise<void>
         // PRINT LINE WITH CRITICAL SECTION
         for (let i: number = 0; i < 20; ++i)
         {
-            await driver.print(str); // PRINT A CHARACTER
+            await driver.print(character); // PRINT A CHARACTER
             await sleep_for(randint(50, 100)); // RANDOM SLEEP
         }
         await driver.print("\n");
