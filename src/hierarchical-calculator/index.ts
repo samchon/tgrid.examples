@@ -1,34 +1,26 @@
+
 import { WorkerConnector } from "tgrid/protocols/workers";
 import { Driver } from "tgrid/basic";
 
 import { ICalculator } from "../utils/ICalculator";
-import { Bundler } from "../utils/Bundler";
-import * as fs from "fs";
-
-const ORIGIN = __dirname + "/child.js";
-const BUNDLE = __dirname + "/child.bundle.js";
 
 async function main(): Promise<void>
 {
 	//----
-	// COMPILIATION
+	// PREPARATIONS
 	//----
-	// BUNDLE child.js -> child.bundle.js
-	await Bundler.bundle(ORIGIN, BUNDLE);
-
-	// READ THE SOURCE CODE
-	let content: string = fs.readFileSync(BUNDLE, "utf8");
-	
-	// OPEN WORKER WITH COMPILATION
+	// DO CONNECT
 	let connector: WorkerConnector = new WorkerConnector();
-	await connector.compile(content);
+	await connector.connect(__dirname + "/calculator.js");
+
+	console.log("connected to the calculator");
+
+	// GET DRIVER
+	let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
 
 	//----
 	// CALL REMOTE FUNCTIONS
 	//----
-	// GET DRIVER
-	let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
-
 	// FUNCTIONS IN THE ROOT SCOPE
 	console.log("1 + 6 =", await calc.plus(1, 6));
 	console.log("7 * 2 =", await calc.multiplies(7, 2));
@@ -56,4 +48,7 @@ async function main(): Promise<void>
 	//----
 	await connector.close();
 }
-main();
+main().catch(exp =>
+{
+	console.log(exp);
+});

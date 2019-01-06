@@ -29,7 +29,7 @@ export class Calculator implements ICalculator
 	}
 }
 
-class Scientific implements IScientific
+export class Scientific implements IScientific
 {
 	public pow(x: number, y: number): number
 	{
@@ -51,7 +51,7 @@ class Scientific implements IScientific
 	}
 }
 
-class Statistics implements IStatistics
+export class Statistics implements IStatistics
 {
 	public mean(...elems: number[]): number
 	{
