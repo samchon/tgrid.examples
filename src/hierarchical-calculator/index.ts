@@ -13,8 +13,6 @@ async function main(): Promise<void>
 	let connector: WorkerConnector = new WorkerConnector();
 	await connector.connect(__dirname + "/calculator.js");
 
-	console.log("connected to the calculator");
-
 	// GET DRIVER
 	let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
 
