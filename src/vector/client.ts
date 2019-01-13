@@ -11,7 +11,7 @@ async function main(): Promise<void>
 
     let vec: Driver<IVector<number>> = connector.getDriver<IVector<number>>();
     for (let i: number = 0; i < 5; ++i)
-	    await vec.push_back(i);
+        await vec.push_back(i);
 
     console.log("size:", await vec.size());
     for (let i: number = 0; i < await vec.size(); ++i)
