@@ -7,15 +7,9 @@ import { IChatPrinter } from "../controllers/IChatPrinter";
 export class ChatService implements IChatService
 {
     private static participants_: HashMap<string, Driver<IChatPrinter>> = new HashMap();
+    private driver_: Driver<IChatPrinter> = null;
+    private name_: string = null;
 
-    private driver_: Driver<IChatPrinter>;
-    private name_: string;
-
-    public constructor(driver: Driver<IChatPrinter> = null)
-    {
-        this.assign(driver);
-        this.name_ = null;
-    }
     public assign(driver: Driver<IChatPrinter>): void
     {
         this.driver_ = driver;

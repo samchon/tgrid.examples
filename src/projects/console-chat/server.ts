@@ -9,11 +9,12 @@ async function main(): Promise<void>
     let server: WebServer<ChatService> = new WebServer();
     await server.open(10103, async (acceptor: WebAcceptor<ChatService>) =>
     {
-        // PREPARE DRIVER
+        // PREPARE SERVICE
         let driver: Driver<IChatPrinter> = acceptor.getDriver<IChatPrinter>();
-        let service: ChatService = new ChatService(driver);
+        let service: ChatService = new ChatService();
+        service.assign(driver);
 
-        // HANDSHAKE
+        // ROVIDE THE SERVICE
         await acceptor.accept(service);
         
         // DESTRUCTOR
