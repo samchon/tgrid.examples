@@ -1,24 +1,27 @@
-import { WebServer, WebAcceptor } from "tgrid/protocols/web";
+import { IChatService } from "../controllers/IChatService";
+
 import { Driver } from "tgrid/basic";
-
 import { HashMap } from "tstl/container/HashMap";
-import { IChatPrinter } from "./internal/IChatPrinter";
-import { IChatService } from "./internal/IChatService";
+import { IChatPrinter } from "../controllers/IChatPrinter";
 
-class ChatService implements IChatService
+export class ChatService implements IChatService
 {
     private static participants_: HashMap<string, Driver<IChatPrinter>> = new HashMap();
 
     private driver_: Driver<IChatPrinter>;
     private name_: string;
 
-    public constructor(driver: Driver<IChatPrinter>)
+    public constructor(driver: Driver<IChatPrinter> = null)
     {
-        this.driver_ = driver;
+        this.assign(driver);
         this.name_ = null;
     }
+    public assign(driver: Driver<IChatPrinter>): void
+    {
+        this.driver_ = driver;
+    }
 
-    public destructor(): void
+    public destroy(): void
     {
         if (this.name_ !== null)
             ChatService.participants_.erase(this.name_);
@@ -47,28 +50,11 @@ class ChatService implements IChatService
                 continue; // SKIP HIMSELF
 
             // INFORM IT TO CLIENT
-            driver.talk(this.name_, content)
-                .catch(() => {}); // DISCONNECTION WHILE TALKING MAY POSSIBLE
+            let promise: Promise<void> = driver.talk(this.name_, content)
+
+            // DISCONNECTION WHILE TALKING MAY POSSIBLE
+            promise.catch(() => {}); 
         }
         console.log(this.name_ + ": " + content);
     }
 }
-
-async function main(): Promise<void>
-{
-    let server: WebServer = new WebServer();
-    await server.open(10103, async (acceptor: WebAcceptor) =>
-    {
-        // PREPARE DRIVER
-        let driver = acceptor.getDriver<IChatPrinter>();
-        let service = new ChatService(driver);
-
-        // HANDSHAKE
-        await acceptor.accept(service);
-        
-        // DESTRUCTOR
-        await acceptor.join();
-        service.destructor();
-    });
-}
-main();

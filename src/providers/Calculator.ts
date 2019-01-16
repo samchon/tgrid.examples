@@ -1,12 +1,34 @@
-import { SimpleCalculator } from "./SimpleCalculator";
 import { 
-    ICalculator, 
-    IScientific, IStatistics
-} from "./ICalculator";
+    ICompositeCalculator, 
+    ISimple, IScientific, IStatistics
+} from "../controllers/ICalculator";
 
-export class Calculator 
+export class SimpleCalculator implements ISimple
+{
+    public plus(x: number, y: number): number
+    {
+        return x + y;
+    }
+    public minus(x: number, y: number): number
+    {
+        return x - y;
+    }
+    
+    public multiplies(x: number, y: number): number
+    {
+        return x * y;
+    }
+    public divides(x: number, y: number): number
+    {
+        if (y === 0)
+            throw new Error("Divided by zero.");
+        return x / y;
+    }
+}
+
+export class CompositeCalculator 
     extends SimpleCalculator 
-    implements ICalculator
+    implements ICompositeCalculator
 {
     public scientific = new Scientific();
     public statistics = new Statistics();

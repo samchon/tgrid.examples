@@ -1,8 +1,8 @@
 import { WorkerConnector } from "tgrid/protocols/workers";
 import { Driver } from "tgrid/basic";
 
-import { ICalculator } from "../utils/ICalculator";
-import { Bundler } from "../utils/Bundler";
+import { ICompositeCalculator } from "../../controllers/ICalculator";
+import { Bundler } from "../../utils/Bundler";
 import * as fs from "fs";
 
 const ORIGIN = __dirname + "/child.js";
@@ -27,7 +27,7 @@ async function main(): Promise<void>
     // CALL REMOTE FUNCTIONS
     //----
     // GET DRIVER
-    let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
+    let calc: Driver<ICompositeCalculator> = connector.getDriver<ICompositeCalculator>();
 
     // FUNCTIONS IN THE ROOT SCOPE
     console.log("1 + 6 =", await calc.plus(1, 6));

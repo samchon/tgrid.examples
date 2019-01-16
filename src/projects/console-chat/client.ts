@@ -1,9 +1,9 @@
 import { WebConnector } from "tgrid/protocols/web";
 import { Driver } from "tgrid/basic";
 
-import { Scanner } from "./internal/Scanner";
-import { IChatService } from "./internal/IChatService";
-import { IChatPrinter } from "./internal/IChatPrinter";
+import { Scanner } from "../../utils/Scanner";
+import { IChatService } from "../../controllers/IChatService";
+import { IChatPrinter } from "../../controllers/IChatPrinter";
 
 class ChatPrinter implements IChatPrinter
 {

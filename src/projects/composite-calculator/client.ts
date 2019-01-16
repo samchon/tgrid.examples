@@ -1,6 +1,7 @@
 import { WebConnector } from "tgrid/protocols/web";
 import { Driver } from "tgrid/basic";
-import { ICalculator } from "../utils/ICalculator";
+
+import { ICompositeCalculator } from "../../controllers/ICalculator";
 
 async function main(): Promise<void>
 {
@@ -12,7 +13,7 @@ async function main(): Promise<void>
     await connector.connect("ws://127.0.0.1:10102");
 
     // GET DRIVER
-    let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
+    let calc: Driver<ICompositeCalculator> = connector.getDriver<ICompositeCalculator>();
     
     //----
     // CALL FUNCTIONS

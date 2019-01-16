@@ -2,7 +2,7 @@
 import { WorkerConnector } from "tgrid/protocols/workers";
 import { Driver } from "tgrid/basic";
 
-import { ICalculator } from "../utils/ICalculator";
+import { ICompositeCalculator } from "../../controllers/ICalculator";
 
 async function main(): Promise<void>
 {
@@ -14,7 +14,7 @@ async function main(): Promise<void>
     await connector.connect(__dirname + "/calculator.js");
 
     // GET DRIVER
-    let calc: Driver<ICalculator> = connector.getDriver<ICalculator>();
+    let calc: Driver<ICompositeCalculator> = connector.getDriver<ICompositeCalculator>();
 
     //----
     // CALL REMOTE FUNCTIONS

@@ -1,9 +1,9 @@
 import { WorkerServer } from "tgrid/protocols/workers";
-import { Scientific } from "../utils/Calculator";
+import { Scientific } from "../../providers/Calculator";
 
 async function main(): Promise<void>
 {
-    let server = new WorkerServer();
+    let server: WorkerServer<Scientific> = new WorkerServer();
     await server.open(new Scientific());
 }
 main();

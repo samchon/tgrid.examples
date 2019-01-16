@@ -1,8 +1,8 @@
 import { WorkerServer, WorkerConnector } from "tgrid/protocols/workers";
 import { Driver } from "tgrid/basic";
 
-import { SimpleCalculator } from "../utils/SimpleCalculator";
-import { IScientific, IStatistics } from "../utils/ICalculator";
+import { SimpleCalculator } from "../../providers/Calculator";
+import { IScientific, IStatistics } from "../../controllers/ICalculator";
 
 class HierarchicalCalculator extends SimpleCalculator
 {

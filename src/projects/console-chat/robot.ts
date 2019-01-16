@@ -3,8 +3,8 @@ import * as std from "tstl";
 import { WebConnector } from "tgrid/protocols/web";
 import { Driver } from "tgrid/basic";
 
-import { IChatService } from "./internal/IChatService";
-import { IChatPrinter } from "./internal/IChatPrinter";
+import { IChatService } from "../../controllers/IChatService";
+import { IChatPrinter } from "../../controllers/IChatPrinter";
 
 class ChatPrinter implements IChatPrinter
 {
