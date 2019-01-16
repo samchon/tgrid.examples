@@ -47,7 +47,8 @@ class ChatService implements IChatService
                 continue; // SKIP HIMSELF
 
             // INFORM IT TO CLIENT
-            driver.talk(this.name_, content);
+            driver.talk(this.name_, content)
+                .catch(() => {}); // DISCONNECTION WHILE TALKING MAY POSSIBLE
         }
         console.log(this.name_ + ": " + content);
     }
