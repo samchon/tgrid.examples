@@ -1,9 +1,10 @@
 import { 
     ICompositeCalculator, 
-    ISimple, IScientific, IStatistics
+    ISimpleCalculator, IScientific, IStatistics
 } from "../controllers/ICalculator";
 
-export class SimpleCalculator implements ISimple
+export class SimpleCalculator 
+    implements ISimpleCalculator
 {
     public plus(x: number, y: number): number
     {

@@ -1,10 +1,11 @@
-export interface ICompositeCalculator extends ISimple
+export interface ICompositeCalculator 
+    extends ISimpleCalculator
 {
     scientific: IScientific;
     statistics: IStatistics;
 }
 
-export interface ISimple
+export interface ISimpleCalculator
 {
     plus(x: number, y: number): number;
     minus(x: number, y: number): number;
