@@ -11,7 +11,7 @@ class HierarchicalCalculator extends SimpleCalculator
     public statistics!: Driver<IStatistics>;
 }
 
-async function get<Controller extends object>
+async function link<Controller extends object>
     (path: string): Promise<Driver<Controller>>
 {
     // DO CONNECT
@@ -26,8 +26,8 @@ async function main(): Promise<void>
 {
     // PREPARE REMOTE CALCULATOR
     let calc = new HierarchicalCalculator();
-    calc.scientific = await get<IScientific>("scientific.js");
-    calc.statistics = await get<IStatistics>("statistics.js");
+    calc.scientific = await link<IScientific>("scientific.js");
+    calc.statistics = await link<IStatistics>("statistics.js");
 
     // OPEN SERVER
     let server = new WorkerServer();
