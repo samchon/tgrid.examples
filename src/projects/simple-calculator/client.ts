@@ -5,18 +5,17 @@ import { ISimpleCalculator } from "../../controllers/ICalculator";
 async function main(): Promise<void>
 {
     //----
-    // PREPARES
+    // CONNECTION
     //----
-    // DO CONNECT
     let connector: WebConnector = new WebConnector();
     await connector.connect("ws://127.0.0.1:10101");
-
-    // GET DRIVER
-    let calc: Driver<ISimpleCalculator> = connector.getDriver<ISimpleCalculator>();
-
+    
     //----
     // CALL FUNCTIONS
     //----
+    // GET DRIVER
+    let calc: Driver<ISimpleCalculator> = connector.getDriver<ISimpleCalculator>();
+
     // CALL FUNCTIONS WITH AWAIT SYMBOL
     console.log("1 + 3 =", await calc.plus(1, 3));
     console.log("7 - 4 =", await calc.minus(7, 4));

@@ -7,18 +7,18 @@ import { ICompositeCalculator } from "../../controllers/ICalculator";
 async function main(): Promise<void>
 {
     //----
-    // PREPARATIONS
+    // CONNECTION
     //----
     // DO CONNECT
     let connector: WorkerConnector = new WorkerConnector();
     await connector.connect(__dirname + "/calculator.js");
-
-    // GET DRIVER
-    let calc: Driver<ICompositeCalculator> = connector.getDriver<ICompositeCalculator>();
-
+    
     //----
     // CALL REMOTE FUNCTIONS
     //----
+    // GET DRIVER
+    let calc: Driver<ICompositeCalculator> = connector.getDriver<ICompositeCalculator>();
+
     // FUNCTIONS IN THE ROOT SCOPE
     console.log("1 + 6 =", await calc.plus(1, 6));
     console.log("7 * 2 =", await calc.multiplies(7, 2));
