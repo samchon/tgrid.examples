@@ -1,5 +1,5 @@
 import { WorkerServer, WorkerConnector } from "tgrid/protocols/workers";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { SimpleCalculator } from "../../providers/Calculator";
 import { IScientific, IStatistics } from "../../controllers/ICalculator";

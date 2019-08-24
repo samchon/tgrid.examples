@@ -1,7 +1,7 @@
 import * as std from "tstl";
 
 import { WebConnector } from "tgrid/protocols/web";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { IChatService } from "../../controllers/IChatService";
 import { IChatPrinter } from "../../controllers/IChatPrinter";

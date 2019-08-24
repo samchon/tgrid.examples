@@ -1,5 +1,5 @@
 import { WorkerServer } from "tgrid/protocols/workers";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { IChatService } from "../../controllers/IChatService";
 import { IChatPrinter } from "../../controllers/IChatPrinter";

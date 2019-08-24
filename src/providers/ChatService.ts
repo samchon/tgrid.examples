@@ -1,6 +1,6 @@
 import { IChatService } from "../controllers/IChatService";
 
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components/Driver";
 import { HashMap } from "tstl/container/HashMap";
 import { IChatPrinter } from "../controllers/IChatPrinter";
 

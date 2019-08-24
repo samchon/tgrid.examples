@@ -19,9 +19,9 @@ async function main(): Promise<void>
         clients.push( robot(script[0], ...script.slice(1)) );
         
     // WAIT AND CLOSE
-    let latch: std.experimental.Latch = new std.experimental.Latch(clients.length);
+    let latch: std.Latch = new std.Latch(clients.length);
     for (let c of clients)
-        c.on("close", () => { latch.arrive(); });
+        c.on("close", () => latch.count_down());
 
     await latch.wait();
     server.kill();

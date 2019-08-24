@@ -1,5 +1,5 @@
 import { WebServer, WebAcceptor } from "tgrid/protocols/web";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { ChatService } from "../../providers/ChatService";
 import { IChatPrinter } from "../../controllers/IChatPrinter";

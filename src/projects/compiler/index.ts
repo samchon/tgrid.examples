@@ -1,5 +1,5 @@
 import { WorkerConnector } from "tgrid/protocols/workers";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 import { ICompositeCalculator } from "../../controllers/ICalculator";
 import { Bundler } from "../../utils/Bundler";

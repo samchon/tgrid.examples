@@ -1,6 +1,6 @@
 import { Vector } from "tstl/container";
 import { WebConnector } from "tgrid/protocols/web";
-import { Driver } from "tgrid/basic";
+import { Driver } from "tgrid/components";
 
 type IVector<T> = Pick<Vector<T>, "size" | "at" | "push_back">;
 
