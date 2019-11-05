@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/samchon/tgrid-examples#readme",
   "dependencies": {
-    "tgrid": "^0.2.0-dev.20190823"
+    "tgrid": "^0.2.7"
   },
   "devDependencies": {
     "@types/browserify": "^12.0.36",
