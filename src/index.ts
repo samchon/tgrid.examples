@@ -1,4 +1,5 @@
-import * as cp from "child_process";
+import cp = require("child_process");
+import fs = require("fs");
 
 function visit(title: string, path: string): Promise<void>
 {
@@ -19,11 +20,16 @@ function visit(title: string, path: string): Promise<void>
 
 async function main(): Promise<void>
 {
-    await visit("std.Vector", __dirname + "/projects/vector");
-    await visit("Simple Calculator", __dirname + "/projects/simple-calculator");
-    await visit("Composite Calculator", __dirname + "/projects/composite-calculator");
-    await visit("Hierarchical Calculator", __dirname + "/projects/hierarchical-calculator");
-    await visit("Chat Application: console ver.", __dirname + "/projects/console-chat");
-    await visit("Worker Chat", __dirname + "/projects/worker-chat");
+    const PATH = __dirname + "/projects"
+
+    let directory: string[] = fs.readdirSync(PATH);
+    for (let elem of directory)
+    {
+        let path: string = `${PATH}/${elem}`;
+        let stats: fs.Stats = fs.lstatSync(path);
+
+        if (stats.isDirectory() && fs.existsSync(path + "/index.js"))
+            await visit(elem, path + "/index.js");
+    }
 }
 main();
