@@ -1,5 +1,5 @@
 {
-  "name": "tgrid-examples",
+  "name": "tgrid.examples",
   "version": "0.0.0",
   "description": "Example Source Codes for TGrid",
   "main": "bin/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/samchon/tgrid-examples.git"
+    "url": "https://github.com/samchon/tgrid.examples"
   },
   "keywords": [
     "example",
@@ -19,9 +19,9 @@
   "author": "Jeongho Nam",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/samchon/tgrid-examples/issues"
+    "url": "https://github.com/samchon/tgrid.examples/issues"
   },
-  "homepage": "https://github.com/samchon/tgrid-examples#readme",
+  "homepage": "https://tgrid.com/en/tutorial/examples",
   "dependencies": {
     "tgrid": "^0.2.7"
   },
