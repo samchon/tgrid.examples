@@ -20,8 +20,8 @@ async function main(name: string, ...messages: string[]): Promise<void>
     // PREPARATIONS
     //----
     // CONNECT WITH LISTENER
-    let connector: WebConnector = new WebConnector(new ChatPrinter());
-    await connector.connect("ws://127.0.0.1:10103");
+    let connector: WebConnector<{}, ChatPrinter> = new WebConnector(new ChatPrinter());
+    await connector.connect("ws://127.0.0.1:10103", {});
 
     let service: Driver<IChatService> = connector.getDriver<IChatService>();
 

@@ -19,8 +19,8 @@ async function main(): Promise<void>
     // PREPARATIONS
     //----
     // CONNECT WITH LISTENER
-    let connector: WebConnector = new WebConnector(new ChatPrinter());
-    await connector.connect("ws://127.0.0.1:10103");
+    let connector: WebConnector<{}, ChatPrinter> = new WebConnector(new ChatPrinter());
+    await connector.connect("ws://127.0.0.1:10103", {});
 
     // SPECIFY CONTROLLER
     let service: Driver<IChatService> = connector.getDriver<IChatService>();

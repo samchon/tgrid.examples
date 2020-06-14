@@ -10,8 +10,8 @@ async function main(): Promise<void>
     // CONNECTION
     //----
     // DO CONNECT
-    let connector: WorkerConnector = new WorkerConnector();
-    await connector.connect(__dirname + "/calculator.js");
+    let connector: WorkerConnector<{}, null> = new WorkerConnector(null);
+    await connector.connect(__dirname + "/calculator.js", {});
     
     //----
     // CALL REMOTE FUNCTIONS

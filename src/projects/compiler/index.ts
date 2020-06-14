@@ -20,8 +20,8 @@ async function main(): Promise<void>
     let content: string = fs.readFileSync(BUNDLE, "utf8");
     
     // OPEN WORKER WITH COMPILATION
-    let connector: WorkerConnector = new WorkerConnector();
-    await connector.compile(content);
+    let connector: WorkerConnector<{}, null> = new WorkerConnector(null);
+    await connector.compile(content, {});
 
     //----
     // CALL REMOTE FUNCTIONS

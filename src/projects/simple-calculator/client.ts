@@ -7,8 +7,8 @@ async function main(): Promise<void>
     //----
     // CONNECTION
     //----
-    let connector: WebConnector = new WebConnector();
-    await connector.connect("ws://127.0.0.1:10101");
+    let connector: WebConnector<{}, null> = new WebConnector(null);
+    await connector.connect("ws://127.0.0.1:10101", {});
     
     //----
     // CALL FUNCTIONS

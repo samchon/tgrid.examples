@@ -13,8 +13,8 @@ interface IController
 async function main(character: string): Promise<void>
 {
     // PREPARE SERVER
-    let server: WorkerServer = new WorkerServer();
-    await server.open();
+    let server: WorkerServer<{}, null> = new WorkerServer();
+    await server.open(null);
     
     // REMOTE FUNCTION CALLS
     let driver: Driver<IController> = server.getDriver<IController>();

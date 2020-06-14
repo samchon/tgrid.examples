@@ -15,14 +15,14 @@ namespace provider
 
 async function main(): Promise<void>
 {
-    let workers: Vector<WorkerConnector<typeof provider>> = new Vector();
+    let workers: Vector<WorkerConnector<{}, typeof provider>> = new Vector();
 
     // CREATE WORKERS
     for (let i: number = 0; i < 4; ++i)
     {
         // CONNECT TO WORKER
-        let w = new WorkerConnector(provider);
-        await w.connect(__dirname + "/child.js");
+        let w = new WorkerConnector<{}, typeof provider>(provider);
+        await w.connect(__dirname + "/child.js", {});
 
         // ENROLL IT
         workers.push_back(w);

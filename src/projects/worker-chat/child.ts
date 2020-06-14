@@ -6,6 +6,7 @@ import { IChatPrinter } from "../../controllers/IChatPrinter";
 
 import { sleep_for } from "tstl/thread";
 import { randint } from "tstl/algorithm";
+import { IChatHeaders } from "../../headers/IChatHeaders";
 
 class ChatPrinter implements IChatPrinter
 {
@@ -21,7 +22,7 @@ async function main(): Promise<void>
     // PREPARATIONS
     //----
     // CONNECT WITH LISTENER
-    let server: WorkerServer = new WorkerServer();
+    let server: WorkerServer<IChatHeaders, ChatPrinter> = new WorkerServer();
     await server.open(new ChatPrinter());
 
     let service: Driver<IChatService> = server.getDriver<IChatService>();
@@ -30,7 +31,7 @@ async function main(): Promise<void>
     // DO CHAT
     //----
     // SET MY NAME
-    let name: string = server.arguments[0];
+    let name: string = server.headers.name;
     while (true)
     {
         if (await service.setName(name) === true)
@@ -39,7 +40,7 @@ async function main(): Promise<void>
     }
     
     // TALK MESSAGES
-    for (let msg of server.arguments.slice(1))
+    for (let msg of server.headers.messages)
     {
         await sleep_for(randint(50, 500));
         await service.talk(msg);

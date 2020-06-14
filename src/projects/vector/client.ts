@@ -6,8 +6,8 @@ type IVector<T> = Pick<Vector<T>, "size" | "at" | "push_back">;
 
 async function main(): Promise<void>
 {
-    let connector: WebConnector = new WebConnector();
-    await connector.connect("ws://127.0.0.1:10100");
+    let connector: WebConnector<{}, null> = new WebConnector(null);
+    await connector.connect("ws://127.0.0.1:10100", {});
 
     let vec: Driver<IVector<number>> = connector.getDriver<IVector<number>>();
     for (let i: number = 0; i < 5; ++i)
